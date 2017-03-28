@@ -5,7 +5,7 @@ import string
 
 def decode(str_num, base):
     """
-    Decode given number from given base to base 10.
+    n Decode given number from given base to base 10.
     str_num -- string representation of number in given base
     base -- base of given number
     """
