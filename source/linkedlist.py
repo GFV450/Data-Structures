@@ -75,6 +75,14 @@ class LinkedList(object):
         if not (0 <= index < self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node at the given index and return the node's data
+        currentIndex = 0
+        currentNode = self.head
+        while(currentNode is not None):
+            if index == currentIndex:
+                return currentNode.data
+            else:
+                currentNode = currentNode.next
+                currentIndex += 1
 
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
@@ -83,6 +91,32 @@ class LinkedList(object):
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node before the given index and insert the item after
+        if self.is_empty() is True:
+            newNode = Node(item)
+            self.head = newNode
+            self.tail = newNode
+            self.size += 1
+        else:
+            currentIndex = 0
+            currentNode = self.head
+            previousNode = None
+            while(currentNode is not None):
+                if index == currentIndex:
+                    newNode = Node(item)
+
+                    if currentIndex == 0:
+                        self.head = newNode
+
+                    newNode.next = currentNode
+                    previousNode.next = newNode
+
+                    self.size += 1
+                    break
+                else:
+                    previousNode = currentNode
+                    print(previousNode)
+                    currentNode = currentNode.next
+                    currentIndex += 1
 
     def append(self, item):
         """Insert the given item at the tail of this linked list"""
@@ -208,6 +242,9 @@ def test_linked_list():
     print('size: ' + str(ll.size))
     print('length: ' + str(ll.length()))
 
+    print('GIANS TESTS')
+    ll.insert_at_index(0, 'B')
+    ll.insert_at_index(1, 'C')
 
 if __name__ == '__main__':
     test_linked_list()

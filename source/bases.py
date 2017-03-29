@@ -5,12 +5,20 @@ import string
 
 def decode(str_num, base):
     """
-    n Decode given number from given base to base 10.
+    Decode given number from given base to base 10.
     str_num -- string representation of number in given base
     base -- base of given number
     """
     assert 2 <= base <= 36
-    # TODO: Decode number
+    power = 0
+    result = 0
+    for char in str_num:
+        number = int(char)
+        result += number * (base ** power)
+        power += 1
+
+    return result
+
 
 def encode(num, base):
     """
@@ -20,6 +28,7 @@ def encode(num, base):
     """
     assert 2 <= base <= 36
     # TODO: Encode number
+
 
 def convert(str_num, base1, base2):
     """
@@ -38,7 +47,9 @@ def main():
         base1 = int(args[1])
         base2 = int(args[2])
         result = convert(str_num, base1, base2)
+        test = decode('10', 2)
         print('{} in base {} is {} in base {}'.format(str_num, base1, result, base2))
+        print(test)
     else:
         print('Usage: {} number base1 base2'.format(sys.argv[0]))
 
