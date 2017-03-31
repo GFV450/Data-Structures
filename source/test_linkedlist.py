@@ -73,7 +73,7 @@ class LinkedListTest(unittest.TestCase):
         assert ll.tail.data == 'B'
         assert ll.size == 1
         ll.insert_at_index(1, 'C')
-        assert ll.head.data == 'B'
+        assert ll.head.data2 == 'B'
         assert ll.tail.data == 'C'
         assert ll.size == 2
         ll.insert_at_index(0, 'A')

@@ -1,5 +1,6 @@
 #!python
 
+
 class Node(object):
 
     def __init__(self, data):
@@ -104,7 +105,9 @@ class LinkedList(object):
                 if index == currentIndex:
                     newNode = Node(item)
 
-                    if currentIndex == 0:
+                    if currentNode.next is None:
+                        self.tail = newNode
+                    elif currentIndex == 0:
                         self.head = newNode
 
                     newNode.next = currentNode
@@ -245,6 +248,7 @@ def test_linked_list():
     print('GIANS TESTS')
     ll.insert_at_index(0, 'B')
     ll.insert_at_index(1, 'C')
+
 
 if __name__ == '__main__':
     test_linked_list()
